@@ -1,0 +1,8 @@
+debug: "True"
+mqtt:
+  host: "localhost"
+  port: 1883
+serial:
+  port: "/dev/ttyUSB0"
+  baud: 921600
+period_s: 0.1
