@@ -1,0 +1,11 @@
+[Unit]
+Description=Connect and parse VN100 IMU measures and publish on mqtt server
+After=mosquitto@.service
+Wants=mosquitto@.service
+ 
+[Service]
+ExecStart=/home/rudloff/sources/CapsuleScripts/devices_driver/imu/.venv/bin/python3 /home/rudloff/sources/CapsuleScripts/devices_driver/imu/imu_measure.py
+Restart=on-failure
+ 
+[Install]
+WantedBy=multi-user.target
