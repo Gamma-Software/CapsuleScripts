@@ -4,7 +4,7 @@ mqtt:
   pass: "y4uv3jpc"
   host: "localhost"
   port: 1884
-serial":
+serial:
   port: "/dev/ttyUSB0"
   baud: 921600
 period_s: 0.1
