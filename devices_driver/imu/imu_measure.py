@@ -71,8 +71,10 @@ try:
             start_time = time.time()
             accel = sensor.read_acceleration_measurements()
             ypr = sensor.read_yaw_pitch_roll()
+            client.publish("/imu_measure/ypr/yaw", ypr.x, retain=True)
+            client.publish("/imu_measure/ypr/pitch", ypr.y, retain=True)
+            client.publish("/imu_measure/ypr/roll", ypr.z, retain=True)
             elapsed_time = conf["period_s"] - (time.time() - start_time)
-            client.publish("imu_measure/ypr", ypr, retain=True)
             if elapsed_time > 0.0:
                 logging.info("Sleeps "+str(elapsed_time))
                 time.sleep(elapsed_time)
