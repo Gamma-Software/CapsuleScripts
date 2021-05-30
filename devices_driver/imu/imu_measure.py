@@ -42,7 +42,7 @@ def on_connect(client, userdata, flags, rc):  # The callback for when the client
 
 client = mqtt.Client()
 logging.info("Connect to localhost broker")
-client.username_pw_set("rudloff", "y4uv3jpc")
+client.username_pw_set(conf["mqtt"]["user"], conf["mqtt"]["pass"])
 client.on_connect = on_connect  # Define callback function for successful connection
 client.connect(conf["mqtt"]["host"], conf["mqtt"]["port"])
 client.loop_start()
