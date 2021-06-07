@@ -6,6 +6,13 @@ Create a python virtual environnement: 'virtualenv .venv"
 Install requirements 'pip install .'
 Install the configurations 'python3 (from the virtualenv) install.py'
 
+# Docker image
+## Build
+`docker build .%`
+
+# Run
+`docker run -d --device=/dev/ttyUSB0 --restart=unless-stopped imu_measure:latest`
+
 # Mosquitto publish topics
 /process/imu_measure/alive
 /imu_measure/attitude/yaw
