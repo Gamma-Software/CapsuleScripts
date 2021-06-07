@@ -80,7 +80,7 @@ try:
             if elapsed_time > 0.0:
                 time.sleep(elapsed_time)
             else:
-                logging.warn("Execution time exceeds expected period: "+str(elapsed_time)+">"+conf["period_s"])
+                logging.warning("Execution time exceeds expected period: "+str(-elapsed_time)+">"+conf["period_s"])
         logging.info("IMU sensor port disconnected: " + conf["serial"]["port"] + " at baudrate " + str(conf["serial"]["baud"]))
         logging.info("Trying to reconnect")
 except KeyboardInterrupt:
