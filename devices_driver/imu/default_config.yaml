@@ -6,5 +6,5 @@ mqtt:
   port: 1884
 serial:
   port: "/dev/ttyUSB0"
-  baud: 921600
+  baud: 115200
 period_s: 0.1
