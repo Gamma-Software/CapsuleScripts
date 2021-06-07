@@ -78,16 +78,17 @@ try:
             client.publish("/imu_measure/acceleration/z", accel.z, retain=True)
             elapsed_time = conf["period_s"] - (time.time() - start_time)
             if elapsed_time > 0.0:
-                logging.info("Sleeps "+str(elapsed_time))
                 time.sleep(elapsed_time)
             else:
                 logging.warn("Execution time exceeds expected period: "+str(elapsed_time)+">"+conf["period_s"])
         logging.info("IMU sensor port disconnected: " + conf["serial"]["port"] + " at baudrate " + str(conf["serial"]["baud"]))
         logging.info("Trying to reconnect")
 except KeyboardInterrupt:
-    logging.info("Stop script")
-    sensor.disconnect()
-    client.publish("/process/imu_measure/alive", False)
-    client.loop_stop()
-    client.disconnect()
-    sys.exit(0)
+    pass
+
+logging.info("Stop script")
+sensor.disconnect()
+client.publish("/process/imu_measure/alive", False)
+client.loop_stop()
+client.disconnect()
+sys.exit(0)
