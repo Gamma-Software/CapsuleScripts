@@ -66,8 +66,8 @@ try:
             time.sleep(1)
         logging.info("IMU sensor port open: " + conf["serial"]["port"] + " at baudrate " + str(conf["serial"]["baud"]))
         while sensor.is_connected:
-            client.publish("/process/imu_measure/alive", True)
             start_time = time.time()
+            client.publish("/process/imu_measure/alive", True)
             ypr = sensor.read_yaw_pitch_roll()
             client.publish("/imu_measure/attitude/yaw", ypr.x, retain=True)
             client.publish("/imu_measure/attitude/pitch", ypr.y, retain=True)
