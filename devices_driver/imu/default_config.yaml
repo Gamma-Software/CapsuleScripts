@@ -1,0 +1,10 @@
+debug: "True"
+mqtt:
+  user: "rudloff"
+  pass: "y4uv3jpc"
+  host: "localhost"
+  port: 1884
+serial:
+  port: "/dev/ttyUSB0"
+  baud: 115200
+period_s: 0.1
