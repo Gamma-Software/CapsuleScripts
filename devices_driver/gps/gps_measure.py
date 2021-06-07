@@ -28,7 +28,7 @@ connected = False
 logging.basicConfig(
     filename="/var/log/capsule/gps_measure/" + dt.datetime.now().strftime("%Y%m%d-%H%M%S") + ".log",
     filemode="a",
-    level=logging.DEBUG if conf.debug else logging.INFO,
+    level=logging.DEBUG if conf["debug"] else logging.INFO,
     format="%(asctime)s %(levelname)s:%(message)s",
     datefmt='%m/%d/%Y %I:%M:%S %p')
 
@@ -63,7 +63,7 @@ client.publish("/process/gps_measure/alive", True)
 try:
     while True:
         try:
-            while not serial.is_open:
+            while not read_gps.is_open:
                 logging.info("Waiting 1 sec for the sensor to connect")
                 logging.info("Trying to connect to GPS sensor with: " + conf["serial"]["port"] + " at baudrate " + str(conf["serial"]["baud"]))
                 read_gps.open()
@@ -74,7 +74,8 @@ try:
                 logging.info("Dry run:"+str(read_gps.readline()))
             sio = io.TextIOWrapper(io.BufferedRWPair(read_gps, read_gps), encoding='ascii', errors='ignore')
             last_valid_nmea = pynmea2.parse("$GPGGA,184353.07,1929.045,S,02410.506,E,1,04,2.6,100.00,M,-33.9,M,,0000*6D")
-            while serial.is_open:
+            while read_gps.is_open:
+                client.publish("/process/gps_measure/alive", True)
                 start_time = time.time()
                 try:
                     nmeaobj = pynmea2.parse(sio.readline())
@@ -83,32 +84,30 @@ try:
                         data = nmeaobj
                         if not data.is_valid:
                             logging.warning("GPS is not fixed")
-                            client.publish("/gps_measure/fixed", False)
+                            client.publish("/gps_measure/fixed", False, retain=True)
                         else:
-                            client.publish("/gps_measure/fixed", True)
+                            client.publish("/gps_measure/fixed", True, retain=True)
                             try:
                                 if isinstance(last_valid_nmea, pynmea2.types.GGA):
-                                    client.publish("/gps_measure/latitude", round(data.latitude, 4))
-                                    client.publish("/gps_measure/longitude", round(data.longitude, 4))
-                                    client.publish("/gps_measure/speed", round(float(data.data[6]) * 1.852, 2))
-                                    client.publish("/gps_measure/route", data.data[7])
+                                    client.publish("/gps_measure/latitude", round(data.latitude, 4), retain=True)
+                                    client.publish("/gps_measure/longitude", round(data.longitude, 4), retain=True)
+                                    client.publish("/gps_measure/speed", round(float(data.data[6]) * 1.852, 2), retain=True)
+                                    client.publish("/gps_measure/route", data.data[7], retain=True)
                                 if isinstance(last_valid_nmea, pynmea2.types.RMC):
-                                    client.publish("/gps_measure/altitude", data.altitude)
+                                    client.publish("/gps_measure/altitude", data.altitude, retain=True)
                                 last_valid_nmea = nmeaobj
                             except AttributeError as e:
                                 logging.warning("Error on attribute {}".format(e))
                                 pass
-                        client.publish("/process/gps_measure/alive", True)
-                        elapsed_time = conf["period_s"] - (time.time() - start_time)
-                        if elapsed_time > 0.0:
-                            logging.info("Sleeps "+str(elapsed_time))
-                            time.sleep(elapsed_time)
-                        else:
-                            logging.warn("Execution time exceeds expected period: "+str(elapsed_time)+">"+conf["period_s"])
                 except pynmea2.ParseError as e:
                     logging.error('Parse error: {}'.format(e))
                     logging.info("Retry getting a correct NMEA data")
                     pass
+                elapsed_time = conf["period_s"] - (time.time() - start_time)
+                if elapsed_time > 0.0:
+                    time.sleep(elapsed_time)
+                else:
+                    logging.warning("Execution time exceeds expected period: "+str(-elapsed_time)+">"+str(conf["period_s"]))
         except serial.SerialException as e:
             logging.error('Device error: {}'.format(e))
             logging.info("Retry connecting to serial port")
