@@ -50,20 +50,31 @@ while not client.is_connected():
     logging.info("Waiting for the broker connection")
     time.sleep(1)
 
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Serial variables
+# ----------------------------------------------------------------------------------------------------------------------
+read_gps = serial.Serial(conf["serial"]["port"], conf["serial"]["baud"], timeout=conf["serial"]["timeout"])
+
 # ----------------------------------------------------------------------------------------------------------------------
 # Main loop
 # ----------------------------------------------------------------------------------------------------------------------
 client.publish("/process/gps_measure/alive", True)
-while True:
-    try:
-        with serial.Serial(conf["gps_serial_port"], conf["gps_serial_baudrate"], timeout=1) as ser:
-            logging.info("Opening port: " + conf["gps_serial_port"] + " at speed: " + conf["gps_serial_baudrate"])
+try:
+    while True:
+        try:
+            while not serial.is_open:
+                logging.info("Waiting 1 sec for the sensor to connect")
+                logging.info("Trying to connect to GPS sensor with: " + conf["serial"]["port"] + " at baudrate " + str(conf["serial"]["baud"]))
+                read_gps.open()
+                time.sleep(1)
+            logging.info("GPS sensor port open: " + conf["serial"]["port"] + " at baudrate " + str(conf["serial"]["baud"]))
             # 'warm up' with reading some input
             for i in range(5):
-                logging.info("Dry run:"+str(ser.readline()))
-            sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser), encoding='ascii', errors='ignore')
+                logging.info("Dry run:"+str(read_gps.readline()))
+            sio = io.TextIOWrapper(io.BufferedRWPair(read_gps, read_gps), encoding='ascii', errors='ignore')
             last_valid_nmea = pynmea2.parse("$GPGGA,184353.07,1929.045,S,02410.506,E,1,04,2.6,100.00,M,-33.9,M,,0000*6D")
-            while True:
+            while serial.is_open:
                 start_time = time.time()
                 try:
                     nmeaobj = pynmea2.parse(sio.readline())
@@ -77,7 +88,6 @@ while True:
                             client.publish("/gps_measure/fixed", True)
                             try:
                                 if isinstance(last_valid_nmea, pynmea2.types.GGA):
-                                    client.publish("/gps_measure/timestamp", dt.datetime.now().timestamp())
                                     client.publish("/gps_measure/latitude", round(data.latitude, 4))
                                     client.publish("/gps_measure/longitude", round(data.longitude, 4))
                                     client.publish("/gps_measure/speed", round(float(data.data[6]) * 1.852, 2))
@@ -88,23 +98,26 @@ while True:
                             except AttributeError as e:
                                 logging.warning("Error on attribute {}".format(e))
                                 pass
+                        client.publish("/process/gps_measure/alive", True)
+                        elapsed_time = conf["period_s"] - (time.time() - start_time)
+                        if elapsed_time > 0.0:
+                            logging.info("Sleeps "+str(elapsed_time))
+                            time.sleep(elapsed_time)
+                        else:
+                            logging.warn("Execution time exceeds expected period: "+str(elapsed_time)+">"+conf["period_s"])
                 except pynmea2.ParseError as e:
-                    logging.warning('Parse error: {}'.format(e))
-                    logging.warning("Retry getting a correct NMEA data")
+                    logging.error('Parse error: {}'.format(e))
+                    logging.info("Retry getting a correct NMEA data")
                     pass
-                except KeyboardInterrupt:
-                    logging.info("Stop script")
-                    client.publish("/process/gps_measure/alive", False)
-                    client.disconnect()
-                    sys.exit(0)
-                client.publish("/process/gps_measure/alive", True)
-                elapsed_time = conf["period_s"] - (time.time() - start_time)
-                if elapsed_time > 0.0:
-                    logging.info("Sleeps "+str(elapsed_time))
-                    time.sleep(elapsed_time)
-                else:
-                    logging.warn("Execution time exceeds expected period: "+str(elapsed_time)+">"+conf["period_s"])
-    except serial.SerialException as e:
-        logging.error('Device error: {}'.format(e))
-        client.publish("gps/process/alive", False)
-        sys.exit('Device error: {}'.format(e))
+        except serial.SerialException as e:
+            logging.error('Device error: {}'.format(e))
+            logging.info("Retry connecting to serial port")
+            pass
+except KeyboardInterrupt:
+    pass
+logging.info("Stop script")
+read_gps.close()
+client.publish("/process/gps_measure/alive", False)
+client.loop_stop()
+client.disconnect()
+sys.exit(0)

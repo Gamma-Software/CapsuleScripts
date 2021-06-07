@@ -6,5 +6,6 @@ mqtt:
   port: 1884
 serial:
   port: "/dev/ttyAMC0"
+  timeout: 1.0 # in second
   baud: 115200
 period_s: 0.1

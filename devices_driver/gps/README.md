@@ -29,4 +29,3 @@ TODO
 /gps_measure/altitude
 /gps_measure/speed
 /gps_measure/route
-/gps_measure/longitude
