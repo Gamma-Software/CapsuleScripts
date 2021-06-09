@@ -21,15 +21,13 @@ services:
     links:
       - influxdb:influxdb
     tty: true
-    #environment:
-      #HOST_PROC: /rootfs/proc
-      #HOST_SYS: /rootfs/sys
-      #HOST_ETC: /rootfs/etc
     #command: -config /etc/telegraf/telegraf.conf -config-directory /etc/telegraf/telegraf.d
     volumes:
-      #- /sys:/rootfs/sys
-      #- /proc:/rootfs/proc
-      #- /etc:/rootfs/etc
+      - /sys:/sys
+      - /proc:/proc
+      - /etc:/etc
+      - /dev/sda2 # Main disk
+      - /mnt:/mnt # Data disk
       - /var/run/docker.sock:/var/run/docker.sock:ro  # necessaire pour remonter les donnees du demon Docker
       - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro  # fichier de configuration de Telegraf
 
