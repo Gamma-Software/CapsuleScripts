@@ -10,7 +10,7 @@ serial
 # Installation
 Create a python virtual environnement: 'virtualenv .venv"
 Install requirements 'pip install -r requirements.txt'
-Install the configurations 'python3 (from the virtualenv) install.py'
+Install the configurations and service and udev rule 'python3 (from the virtualenv) install.py'
 Change default user and pass config in /etc/capsule/gps_measure/config.yaml
 
 ## Details
