@@ -1,6 +1,6 @@
 debug: "True"
 mqtt:
-  user: "rudloff"
+  user: "user"
   pass: "pass"
   host: "localhost"
   port: 1884
