@@ -22,3 +22,4 @@ Change default user and pass config in /etc/capsule/imu_measure/config.yaml
 /imu_measure/acceleration/x
 /imu_measure/acceleration/y
 /imu_measure/acceleration/z
+/imu_measure/leveled
