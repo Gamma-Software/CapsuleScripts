@@ -9,7 +9,6 @@ import datetime as dt
 import vnpy
 import paho.mqtt.client as mqtt
 
-
 # ----------------------------------------------------------------------------------------------------------------------
 # Read script parameters
 # ----------------------------------------------------------------------------------------------------------------------
@@ -76,6 +75,8 @@ try:
             client.publish("/imu_measure/acceleration/x", accel.x, retain=True)
             client.publish("/imu_measure/acceleration/y", accel.y, retain=True)
             client.publish("/imu_measure/acceleration/z", accel.z, retain=True)
+            is_leveled = (conf["leveled_threshold"]>ypr.y>-conf["leveled_threshold"]) and (conf["leveled_threshold"]>ypr.z>-conf["leveled_threshold"])
+            client.publish("/imu_measure/leveled", is_leveled, retain=True)
             elapsed_time = conf["period_s"] - (time.time() - start_time)
             if elapsed_time > 0.0:
                 time.sleep(elapsed_time)
