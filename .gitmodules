@@ -1,0 +1,3 @@
+[submodule "timelapse_geolocate"]
+	path = timelapse_geolocate
+	url = git@github.com:Gamma-Software/timelapse_geolocate.git
