@@ -107,7 +107,6 @@ try:
 except KeyboardInterrupt:
     pass
 logging.info("Stop script")
-read_gps.close()
 client.publish("/process/gps_measure/alive", False)
 client.loop_stop()
 client.disconnect()
