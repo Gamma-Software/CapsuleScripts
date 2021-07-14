@@ -4,13 +4,14 @@ services:
     image: influxdb:1.8
     container_name: influxdb
     restart: always
-    hostname: influxdb
     environment:
       INFLUX_DB: $INFLUX_DB  # nom de la base de données créée à l'initialisation d'InfluxDB
       INFLUXDB_USER: $INFLUXDB_USER  # nom de l'utilisateur pour gérer cette base de données
       INFLUXDB_USER_PASSWORD: $INFLUXDB_USER_PASSWORD  # mot de passe de l'utilisateur pour gérer cette base de données
     volumes:
       - /mnt/data/influxdb:/var/lib/influxdb:Z  # volume pour stocker la base de données InfluxDB
+    ports:
+      - 8086:8086
 
   telegraf:
     image: telegraf
