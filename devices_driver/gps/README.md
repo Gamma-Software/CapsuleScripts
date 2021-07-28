@@ -22,10 +22,10 @@ We assume that the script will only be run on Linux OS
 TODO
 
 # Mosquitto publish topics
-/process/gps_measure/alive
-/gps_measure/fixed
-/gps_measure/longitude
-/gps_measure/latitude
-/gps_measure/altitude
-/gps_measure/speed
-/gps_measure/route
+process/gps_measure/alive
+gps_measure/fixed
+gps_measure/longitude
+gps_measure/latitude
+gps_measure/altitude
+gps_measure/speed
+gps_measure/route

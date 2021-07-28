@@ -15,11 +15,11 @@ Change default user and pass config in /etc/capsule/imu_measure/config.yaml
 `docker run -d --device=/dev/ttyUSB0 --restart=unless-stopped imu_measure:latest`
 
 # Mosquitto publish topics
-/process/imu_measure/alive
-/imu_measure/attitude/yaw
-/imu_measure/attitude/pitch
-/imu_measure/attitude/roll
-/imu_measure/acceleration/x
-/imu_measure/acceleration/y
-/imu_measure/acceleration/z
-/imu_measure/leveled
+process/imu_measure/alive
+imu_measure/attitude/yaw
+imu_measure/attitude/pitch
+imu_measure/attitude/roll
+imu_measure/acceleration/x
+imu_measure/acceleration/y
+imu_measure/acceleration/z
+imu_measure/leveled

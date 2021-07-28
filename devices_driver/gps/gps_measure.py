@@ -54,7 +54,7 @@ while not client.is_connected():
 # ----------------------------------------------------------------------------------------------------------------------
 # Main loop
 # ----------------------------------------------------------------------------------------------------------------------
-client.publish("/process/gps_measure/alive", True)
+client.publish("process/gps_measure/alive", True)
 try:
     while True:
         try:
@@ -66,7 +66,7 @@ try:
                 sio = io.TextIOWrapper(io.BufferedRWPair(read_gps, read_gps), encoding='ascii', errors='ignore')
                 last_valid_nmea = pynmea2.parse("$GPGGA,184353.07,1929.045,S,02410.506,E,1,04,2.6,100.00,M,-33.9,M,,0000*6D")
                 while read_gps.is_open:
-                    client.publish("/process/gps_measure/alive", True)
+                    client.publish("process/gps_measure/alive", True)
                     start_time = time.time()
                     try:
                         nmeaobj = pynmea2.parse(sio.readline())
@@ -75,17 +75,17 @@ try:
                             data = nmeaobj
                             if not data.is_valid:
                                 logging.warning("GPS is not fixed")
-                                client.publish("/gps_measure/fixed", False, retain=True)
+                                client.publish("gps_measure/fixed", False, retain=True)
                             else:
-                                client.publish("/gps_measure/fixed", True, retain=True)
+                                client.publish("gps_measure/fixed", True, retain=True)
                                 try:
                                     if isinstance(last_valid_nmea, pynmea2.types.GGA):
-                                        client.publish("/gps_measure/latitude", round(data.latitude, 4), retain=True)
-                                        client.publish("/gps_measure/longitude", round(data.longitude, 4), retain=True)
-                                        client.publish("/gps_measure/speed", round(float(data.data[6]) * 1.852, 2), retain=True)
-                                        client.publish("/gps_measure/route", data.data[7], retain=True)
+                                        client.publish("gps_measure/latitude", round(data.latitude, 4), retain=True)
+                                        client.publish("gps_measure/longitude", round(data.longitude, 4), retain=True)
+                                        client.publish("gps_measure/speed", round(float(data.data[6]) * 1.852, 2), retain=True)
+                                        client.publish("gps_measure/route", data.data[7], retain=True)
                                     if isinstance(last_valid_nmea, pynmea2.types.RMC):
-                                        client.publish("/gps_measure/altitude", data.altitude, retain=True)
+                                        client.publish("gps_measure/altitude", data.altitude, retain=True)
                                     last_valid_nmea = nmeaobj
                                 except AttributeError as e:
                                     logging.warning("Error on attribute {}".format(e))
@@ -107,7 +107,7 @@ try:
 except KeyboardInterrupt:
     pass
 logging.info("Stop script")
-client.publish("/process/gps_measure/alive", False)
+client.publish("process/gps_measure/alive", False)
 client.loop_stop()
 client.disconnect()
 sys.exit(0)
