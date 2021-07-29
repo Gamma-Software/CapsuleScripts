@@ -2,5 +2,5 @@
 	path = timelapse_geolocate
 	url = git@github.com:Gamma-Software/timelapse_geolocate.git
 [submodule "usbautobackup"]
-	path = device_driver/usbautobackup
+	path = devices_driver/usbautobackup
 	url = git@github.com:Gamma-Software/usbautobackup.git
