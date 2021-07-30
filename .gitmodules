@@ -4,3 +4,9 @@
 [submodule "usbautobackup"]
 	path = devices_driver/usbautobackup
 	url = git@github.com:Gamma-Software/usbautobackup.git
+[submodule "gps_driver"]
+	path = devices_driver/gps
+	url = git@github.com:Gamma-Software/gps_driver.git
+[submodule "imu_driver"]
+	path = devices_driver/imu
+	url = git@github.com:Gamma-Software/imu_driver.git
