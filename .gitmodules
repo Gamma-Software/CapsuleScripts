@@ -10,3 +10,6 @@
 [submodule "imu_driver"]
 	path = devices_driver/imu
 	url = git@github.com:Gamma-Software/imu_driver.git
+[submodule "can_decoder"]
+	path = devices_driver/can_decoder
+	url = git@github.com:Gamma-Software/can_decoder.git
