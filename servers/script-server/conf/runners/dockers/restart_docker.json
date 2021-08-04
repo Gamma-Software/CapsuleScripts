@@ -1,0 +1,16 @@
+{
+  "name": "Docker runners management",
+  "script_path": "docker restart ${Docker runners}",
+  "description": "Script used manage dockers",
+  "group": "Docker Management",
+  "requires_terminal": true,
+  "parameters": [
+    {
+      "name": "Docker runners",
+      "required": true,
+      "type": "list",
+      "description": "Which Docker image would you manage",
+      "values": { "script": "docker ps --format '{{.Names}}'", "shell": true }
+    }
+  ]
+}

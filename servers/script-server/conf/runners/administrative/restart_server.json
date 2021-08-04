@@ -1,0 +1,7 @@
+{
+  "name": "\ud83d\uddd8 Restart Capsule Server",
+  "script_path": "sudo reboot",
+  "description": "Restart Capsule server",
+  "group": "\ud83d\udcbbAdministration",
+  "requires_terminal": true
+}

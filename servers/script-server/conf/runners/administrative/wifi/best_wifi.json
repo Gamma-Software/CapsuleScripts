@@ -1,0 +1,10 @@
+{
+  "name": "Best Wifi",
+  "script_path": "./scripts/best_wifi/best_wifi.py",
+  "description": "Search for the best wifi and select it automatically",
+  "group": "\ud83d\udcf6Wifi Management",
+  "scheduling":
+  {
+    "enabled": true
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "colortest",
+  "group": "samples",
+  "script_path": "./scripts/colortest.sh"
+}

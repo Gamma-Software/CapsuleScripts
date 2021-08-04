@@ -1,0 +1,6 @@
+{
+  "name": "Speedtest",
+  "script_path": "./scripts/best_wifi/speedtest.sh",
+  "description": "This performs speedtest (this will use data)",
+  "group": "\ud83d\udcf6Wifi Management"
+}

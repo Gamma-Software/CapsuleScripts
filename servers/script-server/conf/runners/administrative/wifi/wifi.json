@@ -1,0 +1,6 @@
+{
+  "name": "Get list of wifi",
+  "script_path": "nmcli dev wifi list",
+  "description": "Get the list of nearby wifis",
+  "group": "\ud83d\udcf6Wifi Management"
+}

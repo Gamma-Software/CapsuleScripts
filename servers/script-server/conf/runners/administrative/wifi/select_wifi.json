@@ -1,0 +1,28 @@
+{
+  "name": "Select wifi",
+  "script_path": "./best_wifi/select_wifi.sh connect",
+  "description": "Select the wifi you want to connect the server to. (The password will be asked when connecting)",
+  "group": "\ud83d\udcf6Wifi Management",
+  "working_directory": "./scripts",
+  "requires_terminal": true,
+  "parameters": [
+    {
+      "name": "Wifis nearby",
+      "type": "list",
+      "description": "Refreshed wifi nearby",
+      "values": { "script": "./scripts/best_wifi/select_wifi.sh detailed_list", "shell": true }
+    },
+    {
+      "name": "Select wifi",
+      "required": true,
+      "type": "list",
+      "param": "WIFI",
+      "env_var": "WIFI",
+      "description": "This a refreshed nearby wifi list",
+      "values": { "script": "./scripts/best_wifi/select_wifi.sh simple_list", "shell": true }
+    }
+  ],
+  "output_files": [
+    "speedtest_result.txt"
+  ]
+}

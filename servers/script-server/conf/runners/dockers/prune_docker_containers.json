@@ -1,0 +1,7 @@
+{
+  "name": "\u267b\ufe0fDocker runners cleanup",
+  "script_path": "docker container prune",
+  "description": "Execute 'docker container prune' command",
+  "group": "Docker Management",
+  "requires_terminal": true
+}

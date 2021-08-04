@@ -1,0 +1,28 @@
+{
+  "name": "Admin Schedule Management",
+  "script_path": "./scripts/schedule_manager.sh",
+  "description": "Script used for administering schedules",
+  "group": "\ud83d\udcbbAdministration",
+  "requires_terminal": true,
+  "parameters": [
+    {
+      "name": "Action",
+      "required": true,
+      "type": "list",
+      "default": "list",
+      "description": "Which action would you like to perform?",
+      "values": [
+        "list",
+        "delete"
+      ]
+    },
+    {
+      "name": "File",
+      "required": true,
+      "type": "server_file",
+      "description": "Which file do you want to work on?",
+      "file_dir": "./conf/schedules",
+      "file_type": "file"
+    }
+  ]
+}

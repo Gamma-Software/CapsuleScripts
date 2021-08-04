@@ -1,0 +1,11 @@
+{
+  "name": "Install module",
+  "script_path": "./scripts/install_module.sh",
+  "description": "Install python modules for the script server virtual environment (ex: pandas)",
+  "group": "\ud83d\udcbbAdministration",
+  "parameters": [
+    {
+      "name": "module_name"
+    }
+  ]
+}

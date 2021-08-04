@@ -1,0 +1,1 @@
+echo "$(echo "0 1 * * * sh /home/rudloff/source/CapsuleScripts/misc/clear_cache/clearcache.py >> /var/log/capsule/clear_cache.log 2>&1";crontab -l 2>&1)" | crontab -

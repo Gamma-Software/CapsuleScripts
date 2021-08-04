@@ -1,0 +1,8 @@
+{
+  "port": 8000,
+  "title": "Capsule Script Server",
+  "logging": {
+    "execution_file": "$DATE-$ID.log",
+    "execution_date_format": "%y-%m-%d_%H-%M"
+  }
+}
