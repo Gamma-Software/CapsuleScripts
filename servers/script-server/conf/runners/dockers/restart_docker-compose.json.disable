@@ -1,12 +1,12 @@
 {
-  "name": "Docker container management",
-  "script_path": "./scripts/docker/restart_dockers.sh",
+  "name": "Docker-compose container management",
+  "script_path": "./scripts/docker/restart_dockers_compose.sh",
   "description": "Script used manage dockers",
   "group": "Docker Management",
   "requires_terminal": true,
   "parameters": [
     {
-      "name": "Docker container",
+      "name": "Docker runners",
       "param": "docker_name",
       "env_var": "DOCKER_NAME",
       "required": true,
