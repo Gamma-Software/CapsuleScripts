@@ -18,3 +18,4 @@ esac
 printf "Okay, running ${COMMAND} on the selected file: ${FILE}"
 printf "\n\n"
 ${COMMAND} "${FILE}"
+service script_server restart
