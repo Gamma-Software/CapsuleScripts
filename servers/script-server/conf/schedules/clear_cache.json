@@ -13,6 +13,5 @@
         "repeat_unit": "hours",
         "repeat_period": 1
     },
-    "script_name": "Clear cache",
-    "parameter_values": {}
+    "script_name": "Clear cache"
   }
