@@ -13,3 +13,6 @@
 [submodule "can_decoder"]
 	path = devices_driver/can_decoder
 	url = git@github.com:Gamma-Software/can_decoder.git
+[submodule "trip-overview"]
+	path = servers/trip-overview
+	url = git@github.com:Gamma-Software/trip-overview
