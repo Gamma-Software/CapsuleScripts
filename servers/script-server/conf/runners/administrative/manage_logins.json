@@ -1,0 +1,26 @@
+{
+  "name": "Manage script-server users",
+  "script_path": "./scripts/manage_users.sh",
+  "description": "Create or change user password",
+  "group": "\ud83d\udcbbAdministration",
+  "requires_terminal": true,
+  "parameters": [
+    {
+      "name": "Users",
+      "type": "list",
+      "required": true,
+      "param": "SCRIPT_USERS",
+      "env_var": "SCRIPT_USERS",
+      "description": "Get the list of script-server users",
+      "values": { "script": "cut -d':' -f1 /home/rudloff/.user-htpasswd/.htpasswd", "shell": true }
+    },
+    {
+      "name": "Required Text",
+      "required": true,
+      "secure": true,
+      "env_var": "USER_PASS",
+      "param": "--required_text",
+      "description": "Password"
+    }
+  ]
+}

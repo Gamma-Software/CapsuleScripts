@@ -1,6 +1,17 @@
 {
   "port": 8000,
   "title": "Capsule Script Server",
+  "admin_users": ["rudloff", "valentin"],
+  "code_editors": ["rudloff", "valentin"],
+  "groups": {
+    "dev": ["127.0.0.1", "@admin_users"],
+    "use": ["laurence", "manu"],
+    "all": ["@dev", "@admin_users", "@use"]
+  },
+  "auth": {
+    "type": "htpasswd",
+    "htpasswd_path": "/home/rudloff/.user-htpasswd/.htpasswd"
+  },
   "logging": {
     "execution_file": "$DATE-$ID.log",
     "execution_date_format": "%y-%m-%d_%H-%M"

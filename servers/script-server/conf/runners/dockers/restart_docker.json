@@ -1,7 +1,7 @@
 {
   "name": "Docker container management",
   "script_path": "./scripts/docker/restart_dockers.sh",
-  "description": "Script used manage dockers",
+  "description": "Restart the docker container",
   "group": "Docker Management",
   "requires_terminal": true,
   "parameters": [

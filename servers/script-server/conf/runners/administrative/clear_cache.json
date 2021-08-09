@@ -2,6 +2,7 @@
   "name": "Clear cache & RAM",
   "script_path": "./scripts/clear_cache/clear_cache.sh",
   "description": "Clear the cache of the server",
+  "group": "\ud83d\udcbbAdministration",
   "scheduling":
   {
     "enabled": true
