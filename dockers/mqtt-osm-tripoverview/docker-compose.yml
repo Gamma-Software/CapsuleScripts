@@ -15,7 +15,7 @@ services:
     image: store/klokantech/openmaptiles-server-dev:1.4-free
     container_name: osm_offline_map
     volumes:
-      - /mnt/data/osm_maps/osm.mbtiles:/data/osm.mbtiles
+      - /home/rudloff/sources/CapsuleScripts/dockers/mqtt-osm-tripoverview/osm/:/data/
     ports:
       - 8080:80
 

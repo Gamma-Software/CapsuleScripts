@@ -131,3 +131,7 @@ dmypy.json
 
 # Visual Studio Code
 .vscode/
+
+
+# OSM map
+/dockers/mqtt-osm-tripoverview/osm/osm.mbtiles
