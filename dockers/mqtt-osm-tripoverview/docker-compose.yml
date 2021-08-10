@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  mqtt:
+    image: eclipse-mosquitto:latest
+    container_name: mqtt
+    restart: always
+    volumes:
+      - /home/rudloff/sources/CapsuleScripts/dockers/mqtt-osm-tripoverview/mosquitto/capsule.conf:/mosquitto/config/mosquitto.conf
+      - /home/rudloff/sources/CapsuleScripts/dockers/mqtt-osm-tripoverview/mosquitto/passwd:/mosquitto/config/passwd
+    ports:
+      - 1884:1884
+      - 9001:9001
+
+  offline_map:
+    image: store/klokantech/openmaptiles-server-dev:1.4-free
+    container_name: osm_offline_map
+    volumes:
+      - /mnt/data/osm_maps/osm.mbtiles:/data/osm.mbtiles
+    ports:
+      - 8080:80
+
+  trip_overview:
+    image: nginx:latest
+    container_name: trip_overview
+    volumes:
+      - /home/rudloff/sources/CapsuleScripts/servers/trip-overview/prototype/:/usr/share/nginx/html:ro
+    ports: 
+      - 7000:80
