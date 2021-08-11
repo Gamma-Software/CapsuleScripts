@@ -3,12 +3,11 @@
   "script_path": "/home/rudloff/sources/CapsuleScripts/servers/trip-overview/tripenv/bin/python3 /home/rudloff/sources/CapsuleScripts/servers/trip-overview/script/generate_site.py",
   "description": "Update the trip overview site",
   "group": "Capsule",
+  "scheduling":
+  {
+    "enabled": true
+  },
   "output_files": [
-    "##any_path#",
-    "/var/opt/trip_overview/index.html",
-    {
-      "type": "inline-image",
-      "path": "##any_path.png#"
-    }
+    "/var/opt/trip_overview/index.html"
   ]
 }

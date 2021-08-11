@@ -1,0 +1,18 @@
+{
+  "id": "3",
+  "user": {
+    "user_id": "127.0.0.1",
+    "audit_names": {
+      "ip": "127.0.0.1",
+      "hostname": "localhost"
+    }
+  },
+  "schedule": {
+    "repeatable": true,
+    "start_datetime": "2021-08-11T21:55:00.000000Z",
+    "repeat_unit": "days",
+    "repeat_period": 1
+  },
+  "script_name": "Update Site",
+  "parameter_values": {}
+}
