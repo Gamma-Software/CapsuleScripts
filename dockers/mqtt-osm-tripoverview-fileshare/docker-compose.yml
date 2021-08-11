@@ -2,6 +2,7 @@ version: "3.9"
 services:
   mqtt:
     image: eclipse-mosquitto:latest
+    restart: always
     container_name: mqtt
     volumes:
       - /home/rudloff/sources/CapsuleScripts/dockers/mqtt-osm-tripoverview-fileshare/mosquitto/capsule.conf:/mosquitto/config/mosquitto.conf
@@ -12,6 +13,7 @@ services:
 
   offline_map:
     image: store/klokantech/openmaptiles-server-dev:1.4-free
+    restart: always
     container_name: osm_offline_map
     volumes:
       - /home/rudloff/sources/CapsuleScripts/dockers/mqtt-osm-tripoverview-fileshare/osm/:/data/
@@ -20,6 +22,7 @@ services:
 
   trip_overview:
     image: nginx:latest
+    restart: always
     container_name: trip_overview
     volumes:
       - /home/rudloff/sources/CapsuleScripts/servers/trip-overview/prototype/:/usr/share/nginx/html:ro
@@ -33,8 +36,9 @@ services:
     ports:
       - 9000:80
     environment:
-      AUTH_TYPE: Digest
-      USERNAME: rudloff
-      PASSWORD: margera
+      AUTH_TYPE: $AUTH_TYPE
+      #USERNAME: $USERNAME
+      #PASSWORD: $PASSWORD
     volumes:
       - /mnt/data/shares/:/var/lib/dav
+      - /etc/passwd:/user.passwd
