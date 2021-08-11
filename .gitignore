@@ -134,4 +134,4 @@ dmypy.json
 
 
 # OSM map
-/dockers/mqtt-osm-tripoverview/osm/osm.mbtiles
+*.mbtiles
