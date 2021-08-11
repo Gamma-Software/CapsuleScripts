@@ -1,0 +1,6 @@
+{
+  "name": "Backup GoPro",
+  "script_path": "/usr/bin/python3 /home/rudloff/sources/CapsuleScripts/devices_driver/usbautobackup/go_pro_backup.py",
+  "description": "Backup GoPro files (it should be automatic)",
+  "group": "Capsule"
+}
