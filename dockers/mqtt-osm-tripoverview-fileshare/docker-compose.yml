@@ -25,9 +25,18 @@ services:
     restart: always
     container_name: trip_overview
     volumes:
-      - /home/rudloff/sources/CapsuleScripts/servers/trip-overview/prototype/:/usr/share/nginx/html:ro
+      - /var/opt/trip_overview/:/usr/share/nginx/html:ro
     ports: 
       - 7000:80
+
+  frontpage:
+    image: nginx:latest
+    restart: always
+    container_name: frontpage
+    volumes:
+      - /home/rudloff/sources/CapsuleScripts/servers/frontpage:/usr/share/nginx/html:ro
+    ports: 
+      - 81:80
 
   webdav:
     image: bytemark/webdav
