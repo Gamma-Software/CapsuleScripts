@@ -19,3 +19,7 @@ To run your own server download the osm map at [osm_map_link](https://data.mapti
 Prerequisite: Docker installed
 This is very simple just run the command `docker run -p 8080:80 -d --restart unless-stopped -v /mnt/data/osm_maps/osm.mbtiles:/data/osm.mbtiles --name osm_offline_map store/klokantech/openmaptiles-server-dev:1.4-free`\
 Then go to https://localhost:8080/ and follow the setup instructions
+
+
+## Samba shares
+docker run -dt -v /mnt/data/shares/:/mnt/data/shares -v /etc/samba/smb.conf:/etc/samba/smb.conf -p 445:445 --name samba --restart=always stanback/alpine-samba --no-process-group
