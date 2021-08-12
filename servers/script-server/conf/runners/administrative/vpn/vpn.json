@@ -1,0 +1,19 @@
+{
+  "name": "VPN Managment",
+  "script_path": "./scripts/vpn_management.sh",
+  "description": "Activate/Desactivate/Restart VPN Client",
+  "group": "\ud83d\udcbbAdministration",
+  "parameters": [
+    {
+      "name": "Wifis nearby",
+      "type": "list",
+      "description": "Refreshed wifi nearby",
+      "values": [
+        "start",
+        "stop",
+        "restart"
+      ],
+      "env_var": "CHOICE"
+    }
+  ]
+}
