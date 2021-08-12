@@ -1,8 +1,8 @@
 [Unit]
 Description=Connect and parse GPS measures and publish on mqtt server
-Requires=mosquitto.service
-After=mosquitto.service
-Wants=mosquitto.service
+Requires=docker.service
+After=docker.service
+Wants=docker.service
 
 [Service]
 ExecStartPre=/bin/sleep 10
