@@ -5,7 +5,7 @@ import shutil
 
 print("Configuring gps_measure app...")
 path_to_app = "/etc/capsule/gps_measure"
-path_to_log = "/var/log/capsule/gps_measure"
+path_to_log = "/var/log/capsule"
 path_to_conf = "/etc/capsule/gps_measure/config.yaml"
 path_to_conf = "/etc/capsule/gps_measure/config.yaml"
 path_to_services = "/etc/systemd/system/gps_measure.service"

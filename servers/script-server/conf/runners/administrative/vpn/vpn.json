@@ -5,9 +5,9 @@
   "group": "\ud83d\udcbbAdministration",
   "parameters": [
     {
-      "name": "Wifis nearby",
+      "name": "VPN action",
       "type": "list",
-      "description": "Refreshed wifi nearby",
+      "description": "Choose the action",
       "values": [
         "start",
         "stop",
@@ -15,5 +15,9 @@
       ],
       "env_var": "CHOICE"
     }
-  ]
+  ],
+  "scheduling":
+  {
+    "enabled": true
+  }
 }

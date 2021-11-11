@@ -26,7 +26,7 @@ with open(path_to_conf, "r") as file:
 # ----------------------------------------------------------------------------------------------------------------------
 connected = False
 logging.basicConfig(
-    filename="/var/log/capsule/gps_measure/" + dt.datetime.now().strftime("%Y%m%d-%H%M%S") + ".log",
+    filename="/var/log/capsule/gps_driver.log",
     filemode="a",
     level=logging.DEBUG if conf["debug"] else logging.INFO,
     format="%(asctime)s %(levelname)s:%(message)s",

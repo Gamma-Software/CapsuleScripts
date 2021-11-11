@@ -1,21 +1,24 @@
 #!/bin/bash
 
-if [ $CHOICE = "start" ]
+if [[ $CHOICE == "start" ]]
 then
-    service openvpn start
+    echo $CHOICE
+    service open vpn start
     service openvpn@client start
     exit
 fi
 
-if [ $CHOICE = "stop" ]
+if [[ $CHOICE == "stop" ]]
 then
+    echo $CHOICE
     service openvpn stop
     service openvpn@client stop
     exit
 fi
 
-if [ $CHOICE = "restart" ]
+if [[ $CHOICE == "restart" ]]
 then
+    echo $CHOICE
     service openvpn restart
     service openvpn@client restart
     exit

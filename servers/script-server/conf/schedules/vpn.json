@@ -1,0 +1,21 @@
+{
+  "id": "5",
+  "user": {
+    "user_id": "rudloff",
+    "audit_names": {
+      "auth_username": "rudloff",
+      "ip": "127.0.0.1",
+      "hostname": "localhost"
+    }
+  },
+  "schedule": {
+    "repeatable": true,
+    "start_datetime": "2021-09-06T10:01:00.000000Z",
+    "repeat_unit": "hours",
+    "repeat_period": 1
+  },
+  "script_name": "VPN Managment",
+  "parameter_values": {
+    "Wifis nearby": "restart"
+  }
+}
