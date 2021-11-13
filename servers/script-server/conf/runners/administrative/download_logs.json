@@ -1,0 +1,12 @@
+{
+  "name": "Download logs",
+  "script_path": "./scripts/download_logs.sh",
+  "group": "\ud83d\udcbbAdministration",
+  "description": "This script downloads the logs of the server",
+  "allowed_users": [
+    "rudloff"
+  ],
+  "output_files": [
+    "/var/log/syslog"
+  ]
+}
