@@ -1,5 +1,6 @@
 version: "3.9"
 services:
+
   influxdb:
     image: influxdb:1.8
     container_name: influxdb
@@ -22,6 +23,8 @@ services:
     links:
       - influxdb:influxdb
     tty: true
+    security_opt:
+      - apparmor:unconfined
     #command: -config /etc/telegraf/telegraf.conf -config-directory /etc/telegraf/telegraf.d
     volumes:
       - /sys:/sys
@@ -30,12 +33,13 @@ services:
       - /dev/sda2 # Main disk
       - /mnt:/mnt # Data disk
       - /var/run/docker.sock:/var/run/docker.sock:ro  # necessaire pour remonter les donnees du demon Docker
-      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro  # fichier de configuration de Telegraf
+      - ./config/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro  # fichier de configuration de Telegraf
 
   grafana:
     image: grafana/grafana
     depends_on:
       - influxdb  # indique que le service influxdb est nécessaire
+      - mqtt
     container_name: grafana
     restart: always
     ports:
@@ -43,6 +47,7 @@ services:
     user: "root"
     links:
       - influxdb:influxdb
+      - mqtt:mqtt
     environment:
       GF_INSTALL_PLUGINS: "grafana-clock-panel,\
                           grafana-influxdb-08-datasource,\
@@ -54,3 +59,55 @@ services:
       GF_SECURITY_ADMIN_PASSWORD: $GF_SECURITY_ADMIN_PASSWORD  # mot de passe de l'utilisateur créé par défaut pour accéder à Grafana
     volumes:
       - /mnt/data/grafana_data:/var/lib/grafana:Z
+
+  mqtt:
+    image: eclipse-mosquitto:latest
+    restart: always
+    container_name: mqtt
+    volumes:
+      - ./config/mosquitto/capsule.conf:/mosquitto/config/mosquitto.conf
+      - ./config/mosquitto/passwd:/mosquitto/config/passwd
+    ports:
+      - 1884:1884
+      - 9001:9001
+
+  offline_map:
+    image: store/klokantech/openmaptiles-server-dev:1.4-free
+    restart: always
+    container_name: osm_offline_map
+    volumes:
+      - ./config/osm/:/data/
+    ports:
+      - 8080:80
+
+  trip_overview:
+    image: nginx:latest
+    restart: always
+    container_name: trip_overview
+    volumes:
+      - /var/opt/trip_overview/:/usr/share/nginx/html:ro
+    ports: 
+      - 7000:80
+
+  frontpage:
+    image: nginx:latest
+    restart: always
+    container_name: frontpage
+    volumes:
+      - ./../servers/frontpage:/usr/share/nginx/html:ro
+    ports: 
+      - 90:80
+
+  webdav:
+    image: bytemark/webdav
+    restart: always
+    container_name: file_share
+    ports:
+      - 9000:80
+    environment:
+      AUTH_TYPE: $WEBDAV_AUTH_TYPE
+      #USERNAME: $WEBDAV_USERNAME
+      #PASSWORD: $WEBDAV_PASSWORD
+    volumes:
+      - /mnt/data/shares/:/var/lib/dav
+      - /etc/passwd:/user.passwd
