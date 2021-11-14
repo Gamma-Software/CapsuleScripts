@@ -111,3 +111,12 @@ services:
     volumes:
       - /mnt/data/shares/:/var/lib/dav
       - /etc/passwd:/user.passwd
+    
+  travelblog:
+    image: jekyll/jekyll:3.8
+    container_name: blog
+    command: jekyll serve --watch --force_polling --verbose
+    ports:
+      - 5000:4000
+    volumes:
+      - ./../servers/travelblog:/srv/jekyll
