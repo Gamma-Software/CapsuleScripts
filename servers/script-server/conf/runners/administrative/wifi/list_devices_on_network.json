@@ -2,5 +2,5 @@
   "name": "List devices",
   "script_path": "./scripts/network/list_devices.py",
   "description": "List the devices connected to the network we also are connected (you choose the network interface)",
-  "group": "\ud83d\udcf6Wifi Management",
+  "group": "\ud83d\udcf6Wifi Management"
 }
