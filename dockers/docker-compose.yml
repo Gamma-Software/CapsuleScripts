@@ -114,8 +114,8 @@ services:
     
   travelblog:
     image: jekyll/jekyll:3.8
-    container_name: blog
-    command: jekyll serve --watch --force_polling --verbose
+    container_name: travelblog
+    command: jekyll serve --watch --force_polling --verbose --trace
     ports:
       - 5000:4000
     volumes:
