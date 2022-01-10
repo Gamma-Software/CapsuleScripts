@@ -1,0 +1,6 @@
+services:
+  proxy:
+    build: proxy
+    network_mode: "host"
+    volumes:
+      - ./ssl-cert/:/etc/ssl_cert/
