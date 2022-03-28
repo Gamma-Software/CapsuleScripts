@@ -1,0 +1,102 @@
+---
+# Homepage configuration
+# See https://fontawesome.com/icons for icons options
+
+title: "Capsule page d'accueil"
+subtitle: "Hello !"
+logo: false
+# icon: "fas fa-skull-crossbones" Optional icon
+
+header: true
+footer: '<p>Designed by Valentin Rudloff</a></p>' # set false if you want to hide it.
+
+columns: "4" # "auto" or number (must be a factor of 12: 1, 2, 3, 4, 6, 12)
+connectivityCheck: true # whether you want to display a message when the apps are not accessible anymore (VPN disconnected for example)
+
+# Optional: Proxy / hosting option
+proxy:
+  useCredentials: true # send cookies & authorization headers when fetching service specific data. Set to `true` if you use an authentication proxy. Can be overrided on service level. 
+
+# Optional theme customization
+theme: default
+colors:
+  light:
+    highlight-primary: "#3367d6"
+    highlight-secondary: "#4285f4"
+    highlight-hover: "#5a95f5"
+    background: "#f5f5f5"
+    card-background: "#ffffff"
+    text: "#363636"
+    text-header: "#ffffff"
+    text-title: "#303030"
+    text-subtitle: "#424242"
+    card-shadow: rgba(0, 0, 0, 0.1)
+    link: "#000000"
+    link-hover: "#363636"
+  dark:
+    highlight-primary: "#3367d6"
+    highlight-secondary: "#4285f4"
+    highlight-hover: "#5a95f5"
+    background: "#131313"
+    card-background: "#2b2b2b"
+    text: "#eaeaea"
+    text-header: "#ffffff"
+    text-title: "#fafafa"
+    text-subtitle: "#f5f5f5"
+    card-shadow: rgba(0, 0, 0, 0.4)
+    link: "#ffffff"
+    link-hover: "#ffdd57" #ffdd57
+
+message:
+#  # url: "https://<my-api-endpoint>" # Can fetch information from an endpoint to override value below.
+#  # mapping: # allows to map fields from the remote format to the one expected by Homer
+#  #   title: 'id' # use value from field 'id' as title
+#  #   content: 'value' # value from field 'value' as content
+#  # refreshInterval: 10000 # Optional: time interval to refresh message
+#  #
+#  # Real example using chucknorris.io for showing Chuck Norris facts as messages:
+#  url: https://api.chucknorris.io/jokes/random
+#  mapping:
+#    title: Chuck Nor
+#    content: 'value'
+#  refreshInterval: 10000
+#  style: "is-warning"
+#  title: "Test"
+#  icon: "fa fa-exclamation-triangle"
+  content: "Voici les differents outils permettant de controller Capsule et son server intégré"
+
+# Optional navbar
+# links: [] # Allows for navbar (dark mode, layout, and search) without any links
+links:
+  - name: "retour"
+    #icon: "fas fa-book"
+    url: "/" 
+
+# Services
+# First level array represent a group.
+# Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
+services:
+  - name: "Administration"
+    icon: "fas fa-server"
+    items:
+      - name: "DNS"
+        icon: "fab fa-cloudscale"
+        subtitle: "Local DNS"
+        url: "https://pihole.internal.pival.fr/admin"
+        target: "_blank"
+      - name: "Scripts"
+        icon: "fas fa-code"
+        url: "http://capsule.local:8000"
+  - name: "Monitoring"
+    icon: "fab fa-watchman-monitoring"
+    items:
+      - name: "Grafana"
+        icon: "fas fa-chart-area"
+        subtitle: "Moniter Capsule"
+        url: "http://capsule.local:3000/"
+        target: "_blank"
+      - name: "Camera"
+        icon: "fa fa-camera"
+        subtitle: "Surveiller Capsule"
+        url: "http://192.168.2.100/"
+        target: "_blank"
