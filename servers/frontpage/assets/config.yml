@@ -68,7 +68,7 @@ colors:
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
-  - name: "Developper"
+  - name: "admin"
     #icon: "fas fa-book"
     url: "#dev-page"
 
@@ -80,7 +80,7 @@ services:
     #icon: "fas fa-map"
     items:
       - name: "Map"
-        logo: "assets/icons/map-solid.svg"
+        icon: "fas fa-map"
         subtitle: "Une carte offline"
         url: "http://capsule.local:8080/styles/klokantech-basic/#2/0/0"
         target: "_blank"
@@ -93,19 +93,19 @@ services:
     #icon: "fas fa-rocket"
     items:
       - name: "Blog"
-        icon: "fas fa-blog"
+        icon: "fab fa-blogger"
         subtitle: "Blog de voyage"
         url: "http://capsule.local:5000/"
         tag: "local"
         target: "_blank"
       - name: "Blog online"
-        icon: "fas fa-edit"
+        icon: "fas fa-blog"
         subtitle: "Blog de voyage"
         url: "http://capsule.local:5000/"
         tag: "web"
         target: "_blank"
       - name: "Editer Blog"
-        logo: "assets/icons/blog-edit.png"
+        icon: "fas fa-edit"
         subtitle: "Editer le blog de voyage"
         tag: "local"
         url: "http://capsule.local:5000/"
