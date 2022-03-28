@@ -3,8 +3,8 @@
 # See https://fontawesome.com/icons for icons options
 
 title: "Capsule page d'accueil"
-subtitle: "Hello !"
-logo: false
+subtitle: "Outils intégrés à Capsule"
+logo: "assets/icons/logocapsule-white.png"
 # icon: "fas fa-skull-crossbones" Optional icon
 
 header: true
@@ -47,7 +47,7 @@ colors:
     link: "#ffffff"
     link-hover: "#ffdd57" #ffdd57
 
-message:
+#message:
 #  # url: "https://<my-api-endpoint>" # Can fetch information from an endpoint to override value below.
 #  # mapping: # allows to map fields from the remote format to the one expected by Homer
 #  #   title: 'id' # use value from field 'id' as title
@@ -63,7 +63,7 @@ message:
 #  style: "is-warning"
 #  title: "Test"
 #  icon: "fa fa-exclamation-triangle"
-  content: "Voici les differents outils que le server integré a Capsule propose"
+#  content: "Voici les differents outils que le server integré a Capsule propose"
 
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -77,7 +77,7 @@ links:
 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
 services:
   - name: "Map"
-    icon: "fa fa-house-user"
+    icon: "fas fa-map"
     items:
       - name: "Map"
         icon: "fas fa-map"
