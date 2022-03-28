@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  homer:
+    image: b4bz/homer:latest
+    container_name: frontpage
+    ports:
+      - 8083:8080
+    volumes:
+      - ./assets/:/www/assets
+    environment:
+      - UID=1000
+      - GID=1000
+    restart: unless-stopped
