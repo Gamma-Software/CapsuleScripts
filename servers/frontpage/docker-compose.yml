@@ -1,18 +1,11 @@
 version: '3'
 
-# Connect to the existing traefik network
-networks:
-  frontend:
-    external: true
-
 services:
   homer:
     image: b4bz/homer:latest
-    container_name: homer
-    networks:
-      - frontend
-    #ports:
-    #  - 8083:8080
+    container_name: frontpage
+    ports:
+      - 8083:8080
     volumes:
       - ./assets/:/www/assets
     environment:
