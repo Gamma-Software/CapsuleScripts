@@ -88,30 +88,22 @@ services:
       - /var/opt/trip_overview/:/usr/share/nginx/html:ro
     ports: 
       - 7000:80
-
-  frontpage:
-    image: nginx:latest
-    restart: always
-    container_name: frontpage
-    volumes:
-      - ./../servers/frontpage:/usr/share/nginx/html:ro
-    ports: 
-      - 90:80
-
+  
   webdav:
-    image: bytemark/webdav
-    restart: always
-    container_name: file_share
+    container_name: webdav
+    image: paolobasso/webdav
+    volumes:
+      - /mnt/data/shares:/data
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Paris
+      - TIMEOUTS_S=1200
+      - CLIENT_MAX_BODY_SIZE=1G
     ports:
       - 9000:80
-    environment:
-      AUTH_TYPE: $WEBDAV_AUTH_TYPE
-      #USERNAME: $WEBDAV_USERNAME
-      #PASSWORD: $WEBDAV_PASSWORD
-    volumes:
-      - /mnt/data/shares/:/var/lib/dav
-      - /etc/passwd:/user.passwd
-    
+    restart: unless-stopped
+  
   travelblog:
     image: jekyll/jekyll:3.8
     container_name: travelblog
@@ -121,12 +113,12 @@ services:
     volumes:
       - ./../servers/travelblog:/srv/jekyll
 
-  unbound:
-    image: mvance/unbound:latest
-    container_name: dns-server
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
-    restart: unless-stopped
-    volumes:
-      - "./dns:/opt/unbound/etc/unbound/a-records.conf:ro"
+  #unbound:
+  #  image: mvance/unbound:latest
+  #  container_name: dns-server
+  #  ports:
+  #    - 53:53/tcp
+  #    - 53:53/udp
+  #  restart: unless-stopped
+  #  volumes:
+  #    - "./dns:/opt/unbound/etc/unbound/a-records.conf:ro"
