@@ -1,13 +1,16 @@
 # Docker tig
 tig = Telegraf Influxdb Grafana
 this is a tool set to capture/store/plot data from the server
-
 ## Prerequisite
 A mosquitto 
 docker-compose installed on the host by following https://docs.docker.com/compose/install/
 
+### Mosquitto server
+The mosquitto server is a lightweight MQTT broker that runs on the host. It is used to send/receive messages between the docker containers. 
+To view the mosquitto values, you can run the docker image:
+`docker run -e "TZ=Europe/Paris" -v "/home/rudloff/sources/CapsuleScripts/dockers/mqtt-explorer/:/mqtt-explorer/config" -p "4444:4000" smeagolworms4/mqtt-explorer`
 ## Run
-This is simple, just run 
+This is simple, just run
 `docker-compose up -d`
 in the folder where the docker-compose.yaml is stored
 
