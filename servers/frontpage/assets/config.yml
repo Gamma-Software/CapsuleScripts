@@ -117,7 +117,7 @@ services:
         target: "_blank"
       - name: "Photos du voyage"
         icon: "fa fa-camera"
-        url: "http://capsule.local:9000/"
+        url: "http://capsule.local:8888/"
         tag: "local"
         target: "_blank"
   

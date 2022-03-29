@@ -21,3 +21,8 @@ And finally start the second container:
 
 docker run -p 192.168.10.20:80:80 mywebserver
 In the above commands, the -p option is used to bind the port mapping to a particular ip address. Now you have two containers offering a service on the same port (port 80) but on different ip addresses.
+
+
+## Edit blog
+With Docker VSCode
+`docker run -it --name code-server -p 127.0.0.1:8080:8080 -v "/home/rudloff/sources/CapsuleScripts/dockers/blog-editor/.config:/home/coder/.config" -v "/home/rudloff/sources/CapsuleScripts/servers/travelblog:/home/coder/project" -u "$(id -u):$(id -g)" -e "DOCKER_USER=$USER" codercom/code-server:latest`
