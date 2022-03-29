@@ -23,3 +23,7 @@ Then go to https://localhost:8080/ and follow the setup instructions
 
 ## Samba shares
 docker run -dt -v /mnt/data/shares/:/mnt/data/shares -v /etc/samba/smb.conf:/etc/samba/smb.conf -p 445:445 --name samba --restart=always stanback/alpine-samba --no-process-group
+
+## DNS server
+https://github.com/MatthewVance/unbound-docker
+The DNS server is used to attribuate as host name to an ip in order to resolve its name.

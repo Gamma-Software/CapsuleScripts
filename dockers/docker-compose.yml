@@ -120,3 +120,13 @@ services:
       - 5000:4000
     volumes:
       - ./../servers/travelblog:/srv/jekyll
+
+  unbound:
+    image: mvance/unbound:latest
+    container_name: dns-server
+    port:
+      - 53:53/tcp
+      - 53:53/udp
+    restart: unless-stopped
+    volumes:
+      - "./dns:/opt/unbound/etc/unbound/a-records.conf:ro"
