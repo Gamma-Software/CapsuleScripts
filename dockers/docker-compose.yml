@@ -124,7 +124,7 @@ services:
   unbound:
     image: mvance/unbound:latest
     container_name: dns-server
-    port:
+    ports:
       - 53:53/tcp
       - 53:53/udp
     restart: unless-stopped
