@@ -5,7 +5,7 @@ services:
     image: b4bz/homer:latest
     container_name: frontpage
     ports:
-      - 8083:8080
+      - 80:8080
     volumes:
       - ./assets/:/www/assets
     environment:
