@@ -104,14 +104,14 @@ services:
       - 9000:80
     restart: unless-stopped
   
-  travelblog:
-    image: jekyll/jekyll:3.8
-    container_name: travelblog
-    command: jekyll serve --watch --force_polling --verbose --trace
-    ports:
-      - 5000:4000
-    volumes:
-      - ./../servers/travelblog:/srv/jekyll
+#  travelblog:
+#    image: jekyll/jekyll:3.8
+#    container_name: travelblog
+#    command: jekyll serve --watch --force_polling --verbose --trace
+#    ports:
+#      - 5000:4000
+#    volumes:
+#      - ./../servers/travelblog:/srv/jekyll
 
   #unbound:
   #  image: mvance/unbound:latest
