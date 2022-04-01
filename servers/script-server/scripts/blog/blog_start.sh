@@ -6,7 +6,7 @@ docker ps | grep travelblog
 if [ $? -eq 0 ]; then
     echo "Le blog est déjà en cours d'édition et disponible à l'adresse suivante http://capsule.local:5000"
 else
-    docker run -d --name travelblog -p 5000:4000 -v "/home/rudloff/sources/CapsuleScripts/servers/travelblog:/srv/jekyll" jekyll/jekyll:3.8 jekyll serve --watch --force_polling --verbose --trace
+    docker run -d --name travelblog -p 5000:4000 -v "/home/rudloff/sources/CapsuleScripts/servers/travelblog:/srv/jekyll" jekyll/jekyll:3.8 jekyll serve --watch --force_polling --verbose --trace --livereload
     echo -e "Le blog est lancé et disponible dans quelques minutes à l'adresse suivante sur http://capsule.local:5000"
     echo -e "le blog n'est disponible que dans le reseau local et n'est pas partagé au monde entier."    
 fi
