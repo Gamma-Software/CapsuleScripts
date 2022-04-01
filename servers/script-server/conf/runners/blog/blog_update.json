@@ -1,0 +1,6 @@
+{
+  "name": "Mise à jour du blog",
+  "script_path": "/bin/bash /home/rudloff/sources/CapsuleScripts/servers/script-server/scripts/blog/blog_update.sh",
+  "description": "Mettre à jour les photos disponibles pour le blog",
+  "group": "blog"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Stopper le blog et l'edition",
+  "script_path": "/bin/bash /home/rudloff/sources/CapsuleScripts/servers/script-server/scripts/blog/blog_stop.sh",
+  "description": "Stopper le blog et l'edition",
+  "group": "blog"
+}

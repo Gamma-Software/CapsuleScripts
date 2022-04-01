@@ -24,5 +24,5 @@ In the above commands, the -p option is used to bind the port mapping to a parti
 
 
 ## Edit blog
-With Docker VSCode
-`docker run -it --name code-server -p 127.0.0.1:8080:8080 -v "/home/rudloff/sources/CapsuleScripts/dockers/blog-editor/.config:/home/coder/.config" -v "/home/rudloff/sources/CapsuleScripts/servers/travelblog:/home/coder/project" -u "$(id -u):$(id -g)" -e "DOCKER_USER=$USER" codercom/code-server:latest`
+With Docker VSCode, first synchronize the photos then start the server
+`rsync -ra /mnt/data/shares/data/ /home/rudloff/sources/CapsuleScripts/servers/travelblog/images; docker run -it --name code-server -p 9888:8080 -v "/home/rudloff/sources/CapsuleScripts/dockers/blog-editor/config:/home/coder/.config" -v "/home/rudloff/sources/CapsuleScripts/servers/travelblog:/home/coder/project" -u "$(id -u):$(id -g)" -e "DOCKER_USER=$USER" codercom/code-server:latest`
