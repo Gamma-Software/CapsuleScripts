@@ -16,3 +16,6 @@
 [submodule "trip-overview"]
 	path = servers/trip-overview
 	url = git@github.com:Gamma-Software/trip-overview
+[submodule "travelblog"]
+	path = servers/travelblog
+	url = git@github.com:Gamma-Software/travelblog
