@@ -97,8 +97,6 @@ try:
                     elapsed_time = conf["period_s"] - (time.time() - start_time)
                     if elapsed_time > 0.0:
                         time.sleep(elapsed_time)
-                    else:
-                        logging.warning("Execution time exceeds expected period: "+str(-elapsed_time)+">"+str(conf["period_s"]))
         except serial.SerialException as e:
             logging.error('Device error: {}'.format(e))
             logging.info("Retry connecting to serial port after 1s of wait")

@@ -136,3 +136,4 @@ dmypy.json
 # OSM map
 *.mbtiles
 dockers/config/dns/dns-records.conf
+dockers/blog-editor/config/code-server/config.yaml

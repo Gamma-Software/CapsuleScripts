@@ -79,10 +79,10 @@ services:
   - name: "Administration"
     icon: "fas fa-server"
     items:
-      - name: "DNS"
+      - name: "Routeur"
         icon: "fab fa-cloudscale"
-        subtitle: "Local DNS"
-        url: "https://pihole.internal.pival.fr/admin"
+        subtitle: "Acces Routeur"
+        url: "http://192.168.10.1"
         target: "_blank"
       - name: "Scripts"
         icon: "fas fa-code"
