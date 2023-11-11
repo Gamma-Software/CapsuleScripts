@@ -1,16 +1,6 @@
 {
   "name": "Synchronize USB",
-  "script_path": "./scripts/usb/sync_usb.sh",
+  "script_path": "/home/rudloff/sources/CapsuleScripts/servers/script-server/scripts/docker/restart_webdav.sh",
   "description": "Synchronize USB",
-  "group": "\ud83d\udcbbAdministration",
-  "parameters": [
-    {
-      "name": "USB",
-      "type": "list",
-      "param": "USB",
-      "env_var": "USB",
-      "description": "Refreshed USB connected",
-      "values": { "script": "./scripts/usb/get_usb.sh", "shell": true }
-    }
-  ]
+  "group": "\ud83d\udcbbAdministration"
 }

@@ -112,7 +112,8 @@ services:
     container_name: webdav
     image: paolobasso/webdav
     volumes:
-      - /mnt/data/shares:/data
+      - /mnt/data/shares:/data/shares
+      - /media/rudloff:/data/usb
     environment:
       - PUID=1000
       - PGID=1000
