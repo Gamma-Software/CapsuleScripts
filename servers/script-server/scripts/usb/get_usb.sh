@@ -1,0 +1,1 @@
+lsblk -o NAME,TRAN,SUBSYSTEMS,MODEL,VENDOR,SIZE,TYPE,MOUNTPOINT | grep 'usb' | awk '{print "/dev/"$1}'

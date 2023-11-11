@@ -1,0 +1,16 @@
+{
+  "name": "Synchronize USB",
+  "script_path": "./scripts/usb/sync_usb.sh",
+  "description": "Synchronize USB",
+  "group": "\ud83d\udcbbAdministration",
+  "parameters": [
+    {
+      "name": "USB",
+      "type": "list",
+      "param": "USB",
+      "env_var": "USB",
+      "description": "Refreshed USB connected",
+      "values": { "script": "./scripts/usb/get_usb.sh", "shell": true }
+    }
+  ]
+}
