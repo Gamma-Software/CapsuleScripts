@@ -15,7 +15,7 @@ else
         sleep 10
     fi
     echo -e "Le blog est lancé et disponible dans quelques minutes à l'adresse suivante sur http://capsule.local:5000"
-    echo -e "le blog n'est disponible que dans le reseau local et n'est pas partagé au monde entier."    
+    echo -e "le blog n'est disponible que dans le reseau local et n'est pas partagé au monde entier."
 fi
 
 docker ps | grep blog-editor
