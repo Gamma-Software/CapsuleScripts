@@ -1,5 +1,5 @@
 #!/bin/bash
-rsync -ra /mnt/data/shares/data/ /home/rudloff/sources/CapsuleScripts/servers/travelblog/images
+rsync -ra /mnt/data/shares/data/blog/ /home/rudloff/sources/CapsuleScripts/servers/travelblog/images
 echo "Les medias pour le blog sont synchronisés"
 
 docker ps | grep travelblog
