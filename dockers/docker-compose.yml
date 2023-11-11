@@ -80,15 +80,34 @@ services:
     ports:
       - 8080:80
 
+  osrm-frontend:
+    image: osrm-frontend
+    restart: always
+    container_name: osrm-frontend
+    ports:
+      - 9966:9966
+
+  osrm-backend:
+    image: osrm/osrm-backend
+    restart: always
+    container_name: osrm-backend
+    ports:
+      - 5000:5000
+    volumes:
+      - "./config/osm/route-maps:/data"
+    command: --algorithm mld /data/world-map.osrm
+
+
+
   trip_overview:
     image: nginx:latest
     restart: always
     container_name: trip_overview
     volumes:
       - /var/opt/trip_overview/:/usr/share/nginx/html:ro
-    ports: 
+    ports:
       - 7000:80
-  
+
   webdav:
     container_name: webdav
     image: paolobasso/webdav
@@ -103,7 +122,7 @@ services:
     ports:
       - 9000:80
     restart: unless-stopped
-  
+
 #  travelblog:
 #    image: jekyll/jekyll:3.8
 #    container_name: travelblog
