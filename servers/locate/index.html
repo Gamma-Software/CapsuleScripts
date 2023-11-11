@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-time GPS Marker Movement</title>
+    <link rel="stylesheet" href="leaflet/dist/leaflet.css" />
+    <style>
+        #map { height: 600px; }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="leaflet/src/Leaflet.js"></script>
+<script src="paho.js"></script>
+
+<script>
+    const map = L.map('map').setView([0, 0], 2); // Centered at [0,0] with zoom level 2
+
+    L.tileLayer('http://capsule.local:8080/styles/klokantech-basic/{z}/{x}/{y}.png', {
+        attribution: 'Your attribution here'
+    }).addTo(map);
+
+    function updateMarker(coords) {
+        let marker;
+
+        if (!marker) {
+            marker = L.marker(coords).addTo(map);
+        } else {
+            marker.setLatLng(coords);
+        }
+    }
+
+    // MQTT connection details
+    const broker = 'mqtt://capsule.local:1884';
+    const topic = 'router/gps/gps_coordinates';
+
+    // Connect to MQTT broker
+    const client = mqtt.connect(broker, {
+        username: "rudloff",
+        password: "y4uv3jpc"
+    });
+
+    client.on('connect', function () {
+        console.log('Connected to MQTT broker');
+        client.subscribe(topic);
+    });
+
+    client.on('message', function (topic, message) {
+        // When a new message is received on the subscribed topic
+        const messageString = message.toString(); // Convert the message to a string
+        const coords = JSON.parse(messageString); // Assuming the message is in JSON format
+
+        updateMarker([coords.latitude, coords.longitude]); // Assuming coordinates are latitude and longitude
+    });
+</script>
+
+</body>
+</html>
