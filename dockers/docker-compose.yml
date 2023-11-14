@@ -114,6 +114,7 @@ services:
     volumes:
       - /mnt/data/shares:/data/shares
       - /media/rudloff:/data/usb
+      - /home/rudloff/sources/CapsuleScripts/servers/travelblog/images:/data/blog
     environment:
       - PUID=1000
       - PGID=1000
