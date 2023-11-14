@@ -23,6 +23,7 @@ services:
     links:
       - influxdb:influxdb
     tty: true
+    network_mode: host
     security_opt:
       - apparmor:unconfined
     #command: -config /etc/telegraf/telegraf.conf -config-directory /etc/telegraf/telegraf.d
