@@ -10,7 +10,7 @@
 #    exit 1
 #fi
 
-#rsync -ra /mnt/data/shares/data/ /home/rudloff/sources/CapsuleScripts/servers/travelblog/images
+#rsync -ra /mnt/data/shares/data/blog/ /home/rudloff/sources/CapsuleScripts/servers/travelblog/images
 cd /home/rudloff/sources/CapsuleScripts/servers/travelblog
 eval "$(ssh-agent -s)"
 ssh-add /home/rudloff/.ssh/id_ed25519
