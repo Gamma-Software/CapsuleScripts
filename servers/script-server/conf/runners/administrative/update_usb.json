@@ -1,0 +1,6 @@
+{
+  "name": "Update USB",
+  "script_path": "/home/rudloff/sources/CapsuleScripts/servers/script-server/scripts/usb/update_usb.sh",
+  "description": "Update USB",
+  "group": "\ud83d\udcbbAdministration"
+}

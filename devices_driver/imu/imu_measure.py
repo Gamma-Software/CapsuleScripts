@@ -55,6 +55,10 @@ while not client.is_connected():
 # ----------------------------------------------------------------------------------------------------------------------
 # Main loop
 # ----------------------------------------------------------------------------------------------------------------------
+yaw_offset = 75.976
+roll_offset = 1.233
+pitch_offset = -3.418
+
 try:
     while True:
         while not sensor.is_connected:
@@ -68,13 +72,13 @@ try:
             start_time = time.time()
             client.publish("process/imu_measure/alive", True)
             ypr = sensor.read_yaw_pitch_roll()
-            client.publish("imu_measure/attitude/yaw", ypr.x, retain=True)
-            client.publish("imu_measure/attitude/pitch", ypr.y, retain=True)
-            client.publish("imu_measure/attitude/roll", ypr.z, retain=True)
+            client.publish("imu_measure/attitude/yaw", round(ypr.x+yaw_offset, 2), retain=True)
+            client.publish("imu_measure/attitude/pitch", round(ypr.y+pitch_offset, 2), retain=True)
+            client.publish("imu_measure/attitude/roll", round(ypr.z+roll_offset, 2), retain=True)
             accel = sensor.read_acceleration_measurements()
-            client.publish("imu_measure/acceleration/x", accel.x, retain=True)
-            client.publish("imu_measure/acceleration/y", accel.y, retain=True)
-            client.publish("imu_measure/acceleration/z", accel.z, retain=True)
+            client.publish("imu_measure/acceleration/x", round(accel.x, 2), retain=True)
+            client.publish("imu_measure/acceleration/y", round(accel.y, 2), retain=True)
+            client.publish("imu_measure/acceleration/z", round(accel.z, 2), retain=True)
             is_leveled = (conf["leveled_threshold"]>ypr.y>-conf["leveled_threshold"]) and (conf["leveled_threshold"]>ypr.z>-conf["leveled_threshold"])
             client.publish("imu_measure/leveled", is_leveled, retain=True)
             elapsed_time = conf["period_s"] - (time.time() - start_time)

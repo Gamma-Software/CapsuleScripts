@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Node.js App</title>
+  <link rel="stylesheet" href="libs/leaflet.css" />
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+    #map {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="libs/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // The following lines are optional, you can customize them based on your needs.
+    const marker = L.marker([51.505, -0.09]).addTo(map);
+    marker.bindPopup("<b>Hello world!</b><br>I am a marker.").openPopup();
+
+    // Your code to handle latitude and longitude parameters from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialLat = parseFloat(urlParams.get('lat')) || 51.505;
+    const initialLng = parseFloat(urlParams.get('lng')) || -0.09;
+
+    // Your code to update the marker position based on the URL parameters
+    marker.setLatLng([initialLat, initialLng]);
+  </script>
+</body>
+</html>

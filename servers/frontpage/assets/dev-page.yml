@@ -15,7 +15,7 @@ connectivityCheck: true # whether you want to display a message when the apps ar
 
 # Optional: Proxy / hosting option
 proxy:
-  useCredentials: true # send cookies & authorization headers when fetching service specific data. Set to `true` if you use an authentication proxy. Can be overrided on service level. 
+  useCredentials: true # send cookies & authorization headers when fetching service specific data. Set to `true` if you use an authentication proxy. Can be overrided on service level.
 
 # Optional theme customization
 theme: default
@@ -70,7 +70,7 @@ colors:
 links:
   - name: "retour"
     #icon: "fas fa-book"
-    url: "/" 
+    url: "/"
 
 # Services
 # First level array represent a group.
@@ -86,17 +86,17 @@ services:
         target: "_blank"
       - name: "Scripts"
         icon: "fas fa-code"
-        url: "http://capsule.local:8000"
+        url: "http://192.168.10.141:8000"
   - name: "Monitoring"
     icon: "fab fa-watchman-monitoring"
     items:
       - name: "Grafana"
         icon: "fas fa-chart-area"
         subtitle: "Moniter Capsule"
-        url: "http://capsule.local:3000/"
+        url: "http://192.168.10.141:3000/"
         target: "_blank"
       - name: "Camera"
         icon: "fa fa-camera"
         subtitle: "Surveiller Capsule"
-        url: "http://192.168.2.100/"
+        url: "https://192.168.10.241/"
         target: "_blank"
