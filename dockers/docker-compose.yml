@@ -81,22 +81,22 @@ services:
     ports:
       - 8080:80
 
-  osrm-frontend:
-    image: osrm-frontend
-    restart: always
-    container_name: osrm-frontend
-    ports:
-      - 9966:9966
+ # osrm-frontend:
+ #   image: osrm-frontend
+ #   restart: always
+ #   container_name: osrm-frontend
+ #   ports:
+ #     - 9966:9966
 
-  osrm-backend:
-    image: osrm/osrm-backend
-    restart: always
-    container_name: osrm-backend
-    ports:
-      - 5000:5000
-    volumes:
-      - "./config/osm/route-maps:/data"
-    command: --algorithm mld /data/world-map.osrm
+ # osrm-backend:
+ #   image: osrm/osrm-backend
+ #   restart: always
+ #   container_name: osrm-backend
+ #   ports:
+ #     - 5000:5000
+ #   volumes:
+ #     - "./config/osm/route-maps:/data"
+ #   command: --algorithm mld /data/world-map.osrm
 
 
 
