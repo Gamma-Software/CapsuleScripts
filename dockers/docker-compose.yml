@@ -20,8 +20,6 @@ services:
       - influxdb  # indique que le service influxdb est nécessaire
     container_name: telegraf
     restart: always
-    links:
-      - influxdb:influxdb
     tty: true
     network_mode: host
     security_opt:
